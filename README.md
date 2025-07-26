@@ -173,8 +173,8 @@ First, load the function for manual impact calculation
 
 ``` r
 impact_manual <- function(lagmodel, fix_names, lag_names, W) {
-  betas <- coef(fit_manual)[fix_names]
-  thetas <- coef(fit_manual)[lag_names]
+  betas <- coef(lagmodel)[fix_names]
+  thetas <- coef(lagmodel)[lag_names]
   names(thetas) <- gsub("lag\\.", "", names(thetas))
   rho <- lagmodel$rho
   S_rho <- solve(I - rho * W)
