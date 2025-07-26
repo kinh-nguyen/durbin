@@ -185,6 +185,7 @@ impact_manual <- function(lagmodel, fix_names, lag_names, W) {
     if (is.null(theta_k) | is.na(theta_k)) theta_k = 0
     M <- S_rho %*% (I * beta_k + W * theta_k)
     direct_impact <- mean(diag(M))
+    total_impact <- mean(rowSums(M))
     indirect_impact <- total_impact - direct_impact
     impacts_list[[var]] <- c(
       direct = direct_impact,
